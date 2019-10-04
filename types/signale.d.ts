@@ -26,24 +26,6 @@ declare namespace _signale {
     | 'warn'
     | 'watch';
 
-  export type ChalkColor =
-    | 'black'
-    | 'blue'
-    | 'blueBright'
-    | 'cyan'
-    | 'cyanBright'
-    | 'gray'
-    | 'green'
-    | 'greenBright'
-    | 'magenta'
-    | 'magentaBright'
-    | 'red'
-    | 'redBright'
-    | 'white'
-    | 'whiteBright'
-    | 'yellow'
-    | 'yellowBright';
-
   export type Secret = (string | number)[];
 
   export type LoggerFunction = (...message: any[]) => void;
@@ -52,7 +34,7 @@ declare namespace _signale {
 
   export interface LoggerConfiguration {
     badge: string;
-    color: ChalkColor;
+    color: string;
     label: string;
     logLevel?: LogLevel;
     stream?: WritableStream | WritableStream[];
@@ -110,7 +92,6 @@ declare namespace _signale {
 declare namespace signale {
   export type Secret = _signale.Secret;
   export type LogLevel = _signale.LogLevel;
-  export type ChalkColor = _signale.ChalkColor;
   export type DefaultLogger = _signale.DefaultLogger;
   export type LoggerFunction = _signale.LoggerFunction;
   export interface SignaleConfiguration

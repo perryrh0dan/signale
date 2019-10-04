@@ -1,21 +1,13 @@
 {
-  "name": "signale",
-  "version": "1.4.0",
+  "name": "@perryrh0dan/signale",
+  "version": "1.4.2",
   "description": "Highly configurable logging utility",
   "license": "MIT",
-  "repository": "klaussinani/signale",
-  "author": {
-    "name": "Klaus Sinani",
-    "email": "klaussinani@gmail.com",
-    "url": "https://klaussinani.github.io"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perryrh0dan/signale.git"
   },
-  "maintainers": [
-    {
-      "name": "Mario Sinani",
-      "email": "mariosinani@protonmail.ch",
-      "url": "https://mariocfhq.github.io"
-    }
-  ],
+  "author": "Thomas Pöhlmann <thomaspoehlmann96@googlemail.com> (https://github.com/perryrh0dan)",
   "engines": {
     "node": ">=6"
   },
@@ -66,5 +58,14 @@
   },
   "xo": {
     "space": 2
+  },
+  "bugs": {
+    "url": "https://github.com/perryrh0dan/signale/issues"
+  },
+  "homepage": "https://github.com/perryrh0dan/signale#readme",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
   }
 }

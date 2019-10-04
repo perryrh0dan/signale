@@ -10,14 +10,9 @@
   <img alt="Header" src="media/header.png" width="88%">
 </div>
 
-<p align="center">
-  <a href="https://travis-ci.com/klaussinani/signale">
-    <img alt="Build Status" src="https://travis-ci.com/klaussinani/signale.svg?branch=master">
-  </a>
-  <a href="https://www.npmjs.com/package/signale">
-    <img alt="NPM Downloads" src="https://img.shields.io/npm/dt/signale.svg">
-  </a>
-</p>
+## Important Info
+
+This fork was just created for the taskline project. I only implemented the functionality to use chalk true color support.
 
 ## Description
 

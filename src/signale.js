@@ -205,6 +205,21 @@ class Signale {
     return (suffix || prefix) ? '' : this._formatMessage(args);
   }
 
+  _getColor(color) {
+    if (color.includes('rgb')) {
+      const values = /'rgb\((\d*),(\d*),(\d*)\)'/.exec(color); 
+      const red = values[2];
+      const green = values[3];
+      const blue = values[4];
+      chalk.rgb(red, green, blue);
+    } else if (color.includes('#')) {
+      const hex = /#(\d*)'/.exec()[1];
+      chalk.hex(hex);
+    } else {
+      return chalk[color];
+    }
+  }
+
   _buildSignale(type, ...args) {
     let [msg, additional] = [{}, {}];
 
@@ -231,15 +246,15 @@ class Signale {
     }
 
     if (this._config.displayBadge && type.badge) {
-      signale.push(chalk[type.color](this._padEnd(type.badge, type.badge.length + 1)));
+      signale.push(this._getColor(type.color)(this._padEnd(type.badge, type.badge.length + 1)));
     }
 
     if (this._config.displayLabel && type.label) {
       const label = this._config.uppercaseLabel ? type.label.toUpperCase() : type.label;
       if (this._config.underlineLabel) {
-        signale.push(chalk[type.color](this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
+        signale.push(this._getColor(type.color)(this._padEnd(underline(label), this._longestUnderlinedLabel.length + 1)));
       } else {
-        signale.push(chalk[type.color](this._padEnd(label, this._longestLabel.length + 1)));
+        signale.push(this._getColor(type.color)(this._padEnd(label, this._longestLabel.length + 1)));
       }
     }
 
