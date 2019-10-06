@@ -18,7 +18,7 @@ This fork was just created for the taskline project. I only implemented the func
 
 Hackable and configurable to the core, signale can be used for logging purposes, status reporting, as well as for handling the output rendering process of other node modules and applications.
 
-Read this document in: [简体中文](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md).
+Read this document in: [简体中文](https://github.com/perryrh0dan/signale/blob/master/docs/readme.zh_CN.md).
 
 You can now support the development process by donating on [Open Collective](https://opencollective.com/klaussinani).
 
@@ -264,7 +264,10 @@ The label used to identify the type of the logger.
 
 - Type: `String`
 
-The color of the label, can be any of the foreground colors supported by [chalk](https://github.com/chalk/chalk#colors).
+The color of the label, can be any of the foreground colors supported by [chalk](https://github.com/chalk/chalk#colors) or any RGB or HEX color. 
+
+- RGB colors are defined with `RGB()` -> `RGB(255,255,0)`
+- Hex colors with `#` -> `#FFFF00`
 
 ##### `logLevel`
 

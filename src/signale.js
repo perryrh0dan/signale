@@ -101,6 +101,10 @@ class Signale {
     this._config = Object.assign(this.packageConfiguration, configObj);
   }
 
+  get configuration() {
+    return this._config;
+  }
+
   _arrayify(x) {
     return Array.isArray(x) ? x : [x];
   }
@@ -207,14 +211,14 @@ class Signale {
 
   _getColor(color) {
     if (color.includes('rgb')) {
-      const values = /'rgb\((\d*),(\d*),(\d*)\)'/.exec(color); 
+      const values = /rgb\((\d*),(\d*),(\d*)\)/.exec(color);
       const red = values[2];
       const green = values[3];
       const blue = values[4];
-      chalk.rgb(red, green, blue);
+      return chalk.rgb(red, green, blue);
     } else if (color.includes('#')) {
-      const hex = /#(\d*)'/.exec()[1];
-      chalk.hex(hex);
+      const hex = /#(\w{6})/.exec(color)[1];
+      return chalk.hex(hex);
     } else {
       return chalk[color];
     }
@@ -298,7 +302,7 @@ class Signale {
     isPreviousLogInteractive = this._interactive;
   }
 
-  _log(message, streams = this._stream, logLevel) {
+  _log(message, logLevel, streams = this._stream) {
     if (this.isEnabled() && this._logLevels[logLevel] >= this._logLevels[this._generalLogLevel]) {
       this._formatStream(streams).forEach(stream => {
         this._write(stream, message);
@@ -309,7 +313,7 @@ class Signale {
   _logger(type, ...messageObj) {
     const {stream, logLevel} = this._types[type];
     const message = this._buildSignale(this._types[type], ...messageObj);
-    this._log(this._filterSecrets(message), stream, this._validateLogLevel(logLevel));
+    this._log(this._filterSecrets(message), this._validateLogLevel(logLevel), stream);
   }
 
   _padEnd(str, targetLength) {
@@ -385,7 +389,7 @@ class Signale {
     }
 
     message.push('Initialized timer...');
-    this._log(message.join(' '), this._stream, 'timer');
+    this._log(message.join(' '), 'timer', this._stream);
 
     return label;
   }
@@ -413,7 +417,7 @@ class Signale {
 
       message.push('Timer run for:');
       message.push(yellow(span < 1000 ? span + 'ms' : (span / 1000).toFixed(2) + 's'));
-      this._log(message.join(' '), this._stream, 'timer');
+      this._log(message.join(' '), 'timer', this._stream);
 
       return {label, span};
     }
